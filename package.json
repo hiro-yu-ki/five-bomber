@@ -1,0 +1,19 @@
+{
+  "name": "five-bomber-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "3-6 player browser quiz game inspired by Five Bomber",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "typecheck": "node scripts/check.mjs",
+    "lint": "node scripts/check.mjs",
+    "test": "node --test",
+    "test:e2e": "node --test test/e2e.test.js",
+    "check": "node scripts/check.mjs && node --test && node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

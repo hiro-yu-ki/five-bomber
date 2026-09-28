@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071329">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>FIVE BOMBER</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="settings-screen" class="screen settings-screen" aria-labelledby="game-title">
+      <div class="settings-card">
+        <p class="eyebrow">BOMB QUIZ CHALLENGE</p>
+        <h1 id="game-title"><span>FIVE</span> BOMBER</h1>
+        <form id="settings-form">
+          <label class="field-label" for="player-count">参加人数</label>
+          <select id="player-count" name="playerCount">
+            <option value="3">3人</option><option value="4">4人</option>
+            <option value="5">5人</option><option value="6">6人</option>
+          </select>
+
+          <fieldset>
+            <legend>名前</legend>
+            <div id="name-fields" class="name-fields"></div>
+          </fieldset>
+
+          <fieldset class="route-fields">
+            <legend>進み方</legend>
+            <label><input type="radio" name="routeMode" value="oneWay"> 片道</label>
+            <label><input type="radio" name="routeMode" value="roundTrip"> 往復</label>
+          </fieldset>
+
+          <button id="start-button" class="primary-button" type="submit">ゲームスタート</button>
+          <div class="minor-actions">
+            <button id="question-editor-button" type="button">問題編集</button>
+            <button id="reset-settings-button" type="button">初期設定に戻す</button>
+          </div>
+          <p id="settings-error" class="error" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="editor-screen" class="screen editor-screen hidden" aria-labelledby="editor-title">
+      <div class="settings-card editor-card">
+        <h2 id="editor-title">問題編集</h2>
+        <p>1行に1問、問題文と答えを「|」で区切ってください。</p>
+        <textarea id="question-input" rows="10" spellcheck="false"></textarea>
+        <p id="editor-error" class="error" role="alert"></p>
+        <div class="editor-actions">
+          <button id="save-questions-button" class="primary-button" type="button">保存</button>
+          <button id="restore-questions-button" type="button">標準に戻す</button>
+          <button id="close-editor-button" type="button">戻る</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen game-screen hidden" aria-label="ゲーム画面">
+      <canvas id="stage" width="1920" height="1080"></canvas>
+      <div class="game-hud">
+        <div class="top-bar">
+          <span id="route-label"></span>
+          <button id="fullscreen-button" type="button" aria-label="フルスクリーン">全画面</button>
+          <button id="sound-button" type="button" aria-pressed="false">音 ON</button>
+        </div>
+        <div id="announcement" class="announcement">READY</div>
+        <div class="question-panel">
+          <div id="question-number" class="question-number"></div>
+          <div id="question-text" class="question-text"></div>
+          <div id="answer-text" class="answer-text" aria-live="polite"></div>
+          <div class="timer-shell"><div id="timer-bar" class="timer-bar"></div></div>
+          <div id="timer-text" class="timer-text"></div>
+        </div>
+        <div id="player-labels" class="player-labels"></div>
+        <div class="operator-panel">
+          <button id="correct-button" class="correct-button" type="button">正解 <kbd>○</kbd></button>
+          <button id="wrong-button" class="wrong-button" type="button">不正解 <kbd>×</kbd></button>
+          <button id="reveal-button" type="button">答えを見る</button>
+        </div>
+        <div id="end-panel" class="end-panel hidden">
+          <h2 id="end-title"></h2>
+          <button id="restart-button" class="primary-button" type="button">もう一度</button>
+          <button id="back-button" type="button">設定へ戻る</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

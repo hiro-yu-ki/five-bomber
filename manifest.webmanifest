@@ -1,0 +1,9 @@
+{
+  "name": "FIVE BOMBER Web",
+  "short_name": "FIVE BOMBER",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#020713",
+  "theme_color": "#071329",
+  "icons": [{ "src": "assets/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
